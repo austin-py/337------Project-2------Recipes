@@ -141,13 +141,9 @@ def url_to_output(url):
     dict = get_soup_dictionary(soup)
     return dict 
 
-    
+
 
 if __name__ == '__main__':
     soup = get_soup(' https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/')
     dump_info_to_txt(soup)
     dump_info_to_json(soup)
-    # ingredients = get_ingredients(soup)
-    # directions = get_directions(soup)
-    # nutrition_facts = get_nutrition_facts(soup)
-    # general_info = get_general_info(soup)
