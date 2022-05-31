@@ -71,7 +71,7 @@ def dump_info_to_txt(url):
     nutrition_facts = get_nutrition_facts(soup)
     general_info = get_general_info(soup)
 
-    with open(os.getcwd()+'/Data/output.txt','w') as f:
+    with open(os.getcwd()+'/Data/recipe_data.txt','w') as f:
         f.write('Recipe Name: {}\n\n\n'.format(url_to_name(url)))
         f.write("Ingredients:\n")
         for ingredient in ingredients:
@@ -108,7 +108,7 @@ def dump_info_to_json(url):
          "nutrition_facts" : get_nutrition_facts(soup),
          "general_info" : get_general_info(soup)
          }
-    with open(os.getcwd()+'/Data/output.json','w') as f:
+    with open(os.getcwd()+'/Data/recipe_data.json','w') as f:
         json.dump(dict_to_dump,f,indent=5)
 
 def get_soup_dictionary(url):
