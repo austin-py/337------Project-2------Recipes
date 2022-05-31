@@ -1,8 +1,7 @@
 from bs4 import BeautifulSoup
-from matplotlib.font_manager import json_dump
 import requests
-import os
 import json
+import os
 
 
 def get_soup(url):
@@ -14,7 +13,6 @@ def get_soup(url):
     html = requests.get(url)
     soup = BeautifulSoup(html.content,'html.parser')
     return soup 
-
 
 def get_ingredients(soup):
     """
@@ -28,7 +26,6 @@ def get_ingredients(soup):
         ingredients.append(elem.text)
     return ingredients
 
-
 def get_directions(soup):
     """
     Input: Takes a soup object from BS4
@@ -41,7 +38,6 @@ def get_directions(soup):
         directions.append(elem.text)
     return directions   
 
-
 def get_nutrition_facts(soup):
     """
     Input: Takes a soup object from BS4
@@ -50,7 +46,6 @@ def get_nutrition_facts(soup):
     """
     elem = soup.find("div", "recipe-nutrition-section")
     return elem.text
-
 
 def get_general_info(soup):
     """
@@ -64,19 +59,20 @@ def get_general_info(soup):
         general_info.append(elem.text)
     return general_info   
 
-def dump_info_to_txt(soup):
+def dump_info_to_txt(url):
     """
-    Input: Takes a soup object from BS4
+    Input: Takes a url from AllRecipes.com
 
     Output: Returns nothing, but creates a txt file with the recipe info. 
     """
-
+    soup = get_soup(url)
     ingredients = get_ingredients(soup)
     directions = get_directions(soup)
     nutrition_facts = get_nutrition_facts(soup)
     general_info = get_general_info(soup)
 
-    with open('output.txt','w') as f:
+    with open(os.getcwd()+'/Data/output.txt','w') as f:
+        f.write('Recipe Name: {}\n\n\n'.format(url_to_name(url)))
         f.write("Ingredients:\n")
         for ingredient in ingredients:
             f.write("   -{}\n".format(ingredient))
@@ -97,29 +93,31 @@ def dump_info_to_txt(soup):
         for info in general_info: 
             f.write("   -{}\n".format(info))
 
-
-def dump_info_to_json(soup):
+def dump_info_to_json(url):
     """
-    Input: Takes a soup object from BS4
+    Input: Takes a url from AllRecipes.com
 
     Output: Returns nothing but creates a json file with the recipe info
     """
+    soup = get_soup(url)
+
     dict_to_dump = {
+         'Recipe Name' : url_to_name(url), 
          "ingredients": get_ingredients(soup),
          "directions" : get_directions(soup),
          "nutrition_facts" : get_nutrition_facts(soup),
          "general_info" : get_general_info(soup)
-    }
-    with open('output.json','w') as f:
+         }
+    with open(os.getcwd()+'/Data/output.json','w') as f:
         json.dump(dict_to_dump,f,indent=5)
 
-
-def get_soup_dictionary(soup):
+def get_soup_dictionary(url):
     """
-    Input: Takes a soup object from BS4
+    Input: Takes url from AllRecipes.com
 
     Output: Returns a dictionary of the recipe info 
     """
+    soup = get_soup(url)
     dict_to_dump = {
      "ingredients": get_ingredients(soup),
      "directions" : get_directions(soup),
@@ -128,22 +126,26 @@ def get_soup_dictionary(soup):
     }
     return dict_to_dump
 
-
 def url_to_output(url):
     """
     Input: Takes a url from allrecipes.com
 
     Output: Returns a dictionary of recipe data & creates a json and text output file. 
     """
-    soup = get_soup(url)
-    dump_info_to_txt(soup)
-    dump_info_to_json(soup)
-    dict = get_soup_dictionary(soup)
+    dump_info_to_txt(url)
+    dump_info_to_json(url)
+    dict = get_soup_dictionary(url)
     return dict 
 
-
+def url_to_name(url):
+    split_url = url.split("/")
+    # print(split_url)
+    recipe_name = split_url[-2]
+    # print(recipe_name)
+    recipe_name = recipe_name.split('-')
+    # print(recipe_name)
+    name = " ".join(recipe_name)
+    return name
 
 if __name__ == '__main__':
-    soup = get_soup(' https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/')
-    dump_info_to_txt(soup)
-    dump_info_to_json(soup)
+    url_to_output(' https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/')
