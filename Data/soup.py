@@ -138,12 +138,14 @@ def url_to_output(url):
     return dict 
 
 def url_to_name(url):
+    """
+    Input: Takes a url from allrecipes.com
+
+    Output: Returns a string that is the name of the recipe (from the url).
+    """
     split_url = url.split("/")
-    # print(split_url)
     recipe_name = split_url[-2]
-    # print(recipe_name)
     recipe_name = recipe_name.split('-')
-    # print(recipe_name)
     name = " ".join(recipe_name)
     return name
 
