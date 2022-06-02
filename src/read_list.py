@@ -165,6 +165,93 @@ kitchenware_list = '''
 <li><a href="/wiki/Wooden_spoon" title="Wooden spoon">Wooden spoon</a></li></ul>
 '''
 
+cooking_appliances_list = '''<ul><li><a href="/wiki/Air_fryer" title="Air fryer">Air fryer</a></li>
+<li><a href="/wiki/Bachelor_griller" title="Bachelor griller">Bachelor griller</a></li>
+<li><a href="/wiki/Barbecue_grill" title="Barbecue grill">Barbecue grill</a></li>
+<li><a href="/wiki/Beehive_oven" title="Beehive oven">Beehive oven</a></li>
+<li><a href="/wiki/Brasero_(heater)" title="Brasero (heater)">Brasero (heater)</a></li>
+<li><a href="/wiki/Brazier" title="Brazier">Brazier</a></li>
+<li><a href="/wiki/Bread_machine" title="Bread machine">Bread machine</a></li>
+<li><a href="/wiki/Burjiko" title="Burjiko">Burjiko</a></li>
+<li><a href="/wiki/Butane_torch" title="Butane torch">Butane torch</a></li>
+<li><a href="/wiki/Chapati" title="Chapati">Chapati</a> maker</li>
+<li><a href="/wiki/Cheesemelter" title="Cheesemelter">Cheesemelter</a></li>
+<li><a href="/wiki/Chocolatera" title="Chocolatera">Chocolatera</a></li>
+<li><a href="/wiki/Chorkor_oven" title="Chorkor oven">Chorkor oven</a></li>
+<li><a href="/wiki/Clome_oven" title="Clome oven">Clome oven</a></li>
+<li><a href="/wiki/Comal_(cookware)" title="Comal (cookware)">Comal (cookware)</a></li>
+<li><a href="/wiki/Combi_steamer" title="Combi steamer">Combi steamer</a></li>
+<li><a href="/wiki/Communal_oven" title="Communal oven">Communal oven</a></li>
+<li><a href="/wiki/Convection_microwave" class="mw-redirect" title="Convection microwave">Convection microwave</a></li>
+<li><a href="/wiki/Convection_oven" title="Convection oven">Convection oven</a></li>
+<li><a href="/wiki/Corn_roaster" title="Corn roaster">Corn roaster</a></li>
+<li><a href="/wiki/Crepe_maker" title="Crepe maker">Crepe maker</a></li>
+<li><a href="/wiki/Deep_fryer" title="Deep fryer">Deep fryer</a></li>
+<li><a href="/wiki/Earth_oven" title="Earth oven">Earth oven</a></li>
+<li><a href="/wiki/Electric_cooker" title="Electric cooker">Electric cooker</a></li>
+<li><a href="/wiki/Energy_regulator" class="mw-redirect" title="Energy regulator">Energy regulator</a></li>
+<li><a href="/wiki/Espresso_machine" title="Espresso machine">Espresso machine</a></li>
+<li><a href="/wiki/Field_kitchen" title="Field kitchen">Field kitchen</a></li>
+<li><a href="/wiki/Fire_pot" title="Fire pot">Fire pot</a></li>
+<li><a href="/wiki/Flattop_grill" title="Flattop grill">Flattop grill</a></li>
+<li><a href="/wiki/Food_steamer" title="Food steamer">Food steamer</a></li>
+<li><a href="/wiki/Fufu_Machine" class="mw-redirect" title="Fufu Machine">Fufu Machine</a></li>
+<li><a href="/wiki/Griddle" title="Griddle">Griddle</a></li>
+<li><a href="/wiki/Halogen_oven" title="Halogen oven">Halogen oven</a></li>
+<li><a href="/wiki/Haybox" title="Haybox">Haybox</a></li>
+<li><a href="/wiki/Hibachi" title="Hibachi">Hibachi</a></li>
+<li><a href="/wiki/Horno" title="Horno">Horno</a></li>
+<li><a href="/wiki/Hot_box_(appliance)" title="Hot box (appliance)">Hot box (appliance)</a></li>
+<li><a href="/wiki/Hot_plate" title="Hot plate">Hot plate</a></li>
+<li><a href="/wiki/Instant_Pot" title="Instant Pot">Instant Pot</a></li>
+<li><a href="/wiki/Kamado" title="Kamado">Kamado</a></li>
+<li><a href="/wiki/Kitchener_range" title="Kitchener range">Kitchener range</a></li>
+<li><a href="/wiki/Kujiejun" title="Kujiejun">Kujiejun</a></li>
+<li><a href="/wiki/Kyoto_box" title="Kyoto box">Kyoto box</a></li>
+<li><a href="/wiki/Makiyakinabe" title="Makiyakinabe">Makiyakinabe</a></li>
+<li><a href="/wiki/Masonry_oven" title="Masonry oven">Masonry oven</a></li>
+<li><a href="/wiki/Mess_kit" title="Mess kit">Mess kit</a></li>
+<li><a href="/wiki/Microwave_oven" title="Microwave oven">Microwave oven</a></li>
+<li><a href="/wiki/Multicooker" title="Multicooker">Multicooker</a></li>
+<li><a href="/wiki/Oven" title="Oven">Oven</a></li>
+<li><a href="/wiki/Pancake_machine" title="Pancake machine">Pancake machine</a></li>
+<li><a href="/wiki/Panini_(sandwich)#Grills" title="Panini (sandwich)">Panini sandwich grill</a></li>
+<li><a href="/wiki/Popcorn_maker" title="Popcorn maker">Popcorn maker</a></li>
+<li><a href="/wiki/Pressure_cooking" title="Pressure cooking">Pressure cooker</a></li>
+<li><a href="/wiki/Pressure_frying" title="Pressure frying">Pressure fryer</a></li>
+<li><a href="/wiki/Reflector_oven" title="Reflector oven">Reflector oven</a></li>
+<li><a href="/wiki/Remoska" title="Remoska">Remoska</a></li>
+<li><a href="/wiki/Rice_cooker" title="Rice cooker">Rice cooker</a></li>
+<li><a href="/wiki/Rice_polisher" title="Rice polisher">Rice polisher</a></li>
+<li><a href="/wiki/Roasting_jack" title="Roasting jack">Roasting jack</a></li>
+<li><a href="/wiki/Rocket_mass_heater" title="Rocket mass heater">Rocket mass heater</a></li>
+<li><a href="/wiki/Rotimatic" title="Rotimatic">Rotimatic</a></li>
+<li><a href="/wiki/Rotisserie" title="Rotisserie">Rotisserie</a></li>
+<li><a href="/wiki/Russian_oven" class="mw-redirect" title="Russian oven">Russian oven</a></li>
+<li><a href="/wiki/Sabbath_mode" title="Sabbath mode">Sabbath mode</a></li>
+<li><a href="/wiki/Salamander_broiler" class="mw-redirect" title="Salamander broiler">Salamander broiler</a></li>
+<li><a href="/wiki/Samovar" title="Samovar">Samovar</a></li>
+<li><a href="/wiki/Sandwich_toaster" class="mw-redirect" title="Sandwich toaster">Sandwich toaster</a></li>
+<li><a href="/wiki/Self-cleaning_oven" title="Self-cleaning oven">Self-cleaning oven</a></li>
+<li><a href="/wiki/Shichirin" title="Shichirin">Shichirin</a></li>
+<li><a href="/wiki/Slow_cooker" title="Slow cooker">Slow cooker</a></li>
+<li><a href="/wiki/Solar_cooker" title="Solar cooker">Solar cooker</a></li>
+<li><a href="/wiki/Sous-vide" class="mw-redirect" title="Sous-vide">Sous-vide</a> cooker</li>
+<li><a href="/wiki/Soy_milk_maker" title="Soy milk maker">Soy milk maker</a></li>
+<li><a href="/wiki/Kitchen_stove" title="Kitchen stove">Stove</a></li>
+<li><a href="/wiki/Susceptor" title="Susceptor">Susceptor</a></li>
+<li><a href="/wiki/Tabun_oven" title="Tabun oven">Tabun oven</a></li>
+<li><a href="/wiki/Tandoor" title="Tandoor">Tandoor</a></li>
+<li><a href="/wiki/Tangia" title="Tangia">Tangia</a></li>
+<li><a href="/wiki/Thermal_immersion_circulator" title="Thermal immersion circulator">Thermal immersion circulator</a></li>
+<li><a href="/wiki/Toaster" title="Toaster">Toaster</a> and toaster ovens</li>
+<li><a href="/wiki/Turkey_fryer" title="Turkey fryer">Turkey fryer</a></li>
+<li><a href="/wiki/Vacuum_fryer" title="Vacuum fryer">Vacuum fryer</a><sup id="cite_ref-1" class="reference"><a href="#cite_note-1">[1]</a></sup></li>
+<li><a href="/wiki/Waffle_iron" title="Waffle iron">Waffle iron</a></li>
+<li><a href="/wiki/Wet_grinder" title="Wet grinder">Wet grinder</a></li>
+<li><a href="/wiki/Wood-fired_oven" class="mw-redirect" title="Wood-fired oven">Wood-fired oven</a></li></ul>
+'''
+
 def get_kitchen_utensils_list():
     soup = BeautifulSoup(kitchen_utensils_list, 'html.parser')
     list_html = soup.find_all('li')
@@ -182,11 +269,20 @@ def get_kitchenware_list():
         list.append(li.text)
     return list
 
+def get_cooking_appliances_list():
+    soup = BeautifulSoup(cooking_appliances_list, 'html.parser')
+    list_html = soup.find_all('li')
+    list = []
+    for li in list_html:
+        list.append(li.text)
+    return list
+
 #Combine all lists to one
 def get_tool_list():
     tool_list = []
     tool_list.extend(get_kitchen_utensils_list())
     tool_list.extend(get_kitchenware_list())
+    tool_list.extend(get_cooking_appliances_list())
     a = (map(lambda x: x.lower(), tool_list))
     #Conver elements to lower case
     tool_list = list(a)
