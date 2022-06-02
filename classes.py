@@ -47,7 +47,7 @@ class Ingredient:
 
 class Step:
     def __init__(self, number):
-        self.step_number = 0
+        self.step_number = number
         self.ingredients = []
         self.tools = []
         self.methods = []
