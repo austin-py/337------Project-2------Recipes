@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-kichen_utensilis_list = '''<ul>
+kichen_utensils_list = '''<ul>
 <li>Apron</li>
 <li>Butter knife</li>
 <li>Butter dish</li>
@@ -105,7 +105,7 @@ kichen_utensilis_list = '''<ul>
 </ul>'''
 
 def get_kichen_utensils_list():
-    soup = BeautifulSoup(kichen_utensilis_list, 'html.parser')
+    soup = BeautifulSoup(kichen_utensils_list, 'html.parser')
     list_html = soup.find_all('li')
     list = []
     for li in list_html:
