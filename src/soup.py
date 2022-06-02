@@ -126,6 +126,20 @@ def get_soup_dictionary(url):
     }
     return dict_to_dump
 
+def get_soup_dictionary_w_soup(soup):
+    """
+    Input: Takes a soup object from BS4
+
+    Output: Returns a dictionary of the recipe info 
+    """
+    dict_to_dump = {
+     "ingredients": get_ingredients(soup),
+     "directions" : get_directions(soup),
+     "nutrition_facts" : get_nutrition_facts(soup),
+     "general_info" : get_general_info(soup)
+    }
+    return dict_to_dump
+
 def url_to_output(url):
     """
     Input: Takes a url from allrecipes.com
