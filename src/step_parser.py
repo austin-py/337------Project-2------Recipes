@@ -24,8 +24,9 @@ def get_directions(filename=None):
         text = d.replace(match.group(0), '')
         text = text.replace('Step ', '')
         for w in text.split():
-            if w.lower() in recipe.tools:
-                print(w)
+            for t in recipe.tools:
+                if w.lower() == t.lower():
+                    print(w)
 
     return directions
 
