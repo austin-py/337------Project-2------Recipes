@@ -35,7 +35,7 @@ def parse_method(data):
                              'mince', 'crush', 'blend', 'squeeze', 'peel',
                              'stir', 'mix', 'whisk', 'drain', 'strain', 'marinate',
                              'brush',
-                             'freeze', 'cool', 'caramelize']
+                             'freeze', 'cool', 'caramelize', 'preheat']
 
     returned_main_methods = []
     for k in all_main_methods.keys():
