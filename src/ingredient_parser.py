@@ -1,5 +1,5 @@
-from src.classes import *
-from src.soup import *
+from classes import *
+from soup import *
 import re
 import nltk
 
