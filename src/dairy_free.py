@@ -26,6 +26,10 @@ def dairy_free(recipe):
         for dairy in dairy_types.keys():
             if dairy in step.description:
                 step.description = step.description.replace(dairy,dairy_types[dairy])
+            for i in range(len(step.ingredients)):
+                if dairy in step.ingredients[i]:
+                    step.ingredients[i] = step.ingredients[i].replace(dairy,dairy_types[dairy])
+
 
     recipe.ingredients = ingredients
     recipe.steps = steps 
