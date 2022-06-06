@@ -30,7 +30,7 @@ def accept_transformation():
     Output: Returns the user-selected transformation from the available list
     #TODO add the style of cuisine we are doing to transformation list 
     """
-    transformations = ['to vegetarian','from vegetarian','healthy','unhealthy','style-of-cuisine-placeholder']
+    transformations = ['to vegetarian','from vegetarian','healthy','unhealthy','style-of-cuisine-placeholder','scale serving size', 'dairy-free']
     while True:
         print("Please choose a transformation from the following options:")
         for i in transformations:
@@ -47,5 +47,8 @@ def accept_transformation():
 
 if __name__ == '__main__':
     accept_url()
-    #TODO Some transformations here 
+    #TODO BUILD RECIPE HERE 
     accept_transformation()
+    #TODO Some transformations here 
+
+    #Output somewhere here 

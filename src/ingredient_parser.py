@@ -158,6 +158,18 @@ def test_ingredient_parser():
         #print(res[0])
         #print(res[1])
 
+def get_ingredient_list(data):
+    """
+    Takes a data dictionary from Allrecipes.com and returns a list of ingredient objects for further manipulation. 
+    """
+    ingredient_class_list = []
+    ingredient_tuple = parse_ingredient(data)
+    for i in range(len(ingredient_tuple[0])):
+        iclm = Ingredient(ingredient_tuple[0][i], ingredient_tuple[1][i], ingredient_tuple[2][i],
+                          ingredient_tuple[3][i], ingredient_tuple[4][i])
+        ingredient_class_list.append(iclm)
+    return ingredient_class_list
+
 
 if __name__ == '__main__':
     test_ingredient_parser()
