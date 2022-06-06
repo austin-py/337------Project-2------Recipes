@@ -3,6 +3,7 @@ from read_json import load_recipe
 from read_list import get_tool_list
 import re
 from method_parser import parse_method
+from ingredient_parser import get_ingredient_list
 '''
 self.step_number = number
 self.ingredients = []
@@ -19,8 +20,7 @@ def get_directions(recipe_data):
     directions[0] = directions[0].replace('Advertisement', '')
     tools = get_tool_list()
     methods = parse_method(recipe_data)
-    ingredients = recipe_data['ingredients']
-    ingredients = ingredient_parser(ingredients)
+    ingredients = get_ingredient_list(recipe_data)
     #print(ingredients)
     #print(tools)
     #print(methods)
@@ -75,6 +75,7 @@ def split_into_sentences(d):
 
     return results
 
+'''
 def ingredient_parser(ingredients):
     ingredients_list = []
     for i in ingredients:
@@ -130,10 +131,12 @@ def ingredient_parser(ingredients):
         ingredients_list.append(i)
 
     return ingredients_list
+'''
 
 def get_ingredients(s, ingredients):
     ingredients_in_s = []
-    for i in ingredients:
+    for ingredient in ingredients:
+        i = ingredient.name
         for word in i.split():
             word = word.replace(',', '')
             word = word.replace('.', '')
