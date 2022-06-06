@@ -2,6 +2,7 @@ import create_recipe as cr
 import dairy_free as df 
 import half_double as scale
 import health_transformer as ht
+import vegetarian as ve
 
 def accept_url():
     """
@@ -46,9 +47,11 @@ def main():
 
     transformation = accept_transformation()
     if transformation == 'to vegetarian':
-        pass 
+        transformed_recipe, change = ve.to_vegetarian(recipe)
+        print(change)
     elif transformation == 'from vegetarian':
-        pass 
+        transformed_recipe, change = ve.to_non_vegetarian(recipe)
+        print(change)
     elif transformation == 'healthy':
         transformed_recipe = ht.to_healthy(recipe)
     elif transformation == 'unhealthy':
