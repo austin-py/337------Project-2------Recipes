@@ -210,6 +210,13 @@ def get_time(s):
 
     return time_in_s
 
+def get_used_tools(steps):
+    used_tool_lists = []
+    for s in steps:
+        used_tool_lists = list(set(used_tool_lists + s.tools))
+
+    return used_tool_lists
+
 def print_directions(steps):
 
     for step in steps:
@@ -222,7 +229,8 @@ def print_directions(steps):
 def main():
     recipe_data = load_recipe()
     steps = get_directions(recipe_data)
-    print_directions(steps)
+    print(get_used_tools(steps))
+    #print_directions(steps)
 
 if __name__=='__main__':
     main()
