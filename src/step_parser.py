@@ -12,8 +12,8 @@ self.time = 0
 self.description = ''
 '''
 
-def get_directions(filename=None):
-    recipe_data = load_recipe(filename)
+
+def get_directions(recipe_data):
     directions = recipe_data['directions']
     #Remove advertisement
     directions[0] = directions[0].replace('Advertisement', '')
@@ -21,17 +21,9 @@ def get_directions(filename=None):
     methods = parse_method(recipe_data)
     ingredients = recipe_data['ingredients']
     ingredients = ingredient_parser(ingredients)
-    print(ingredients)
+    #print(ingredients)
     #print(tools)
     #print(methods)
-
-    '''"directions": ["    Step 1   Preheat oven to 375 degrees F (190 degrees C).    Advertisement ",
-          "    Step 2   Season ground beef with garlic powder. Heat a large skillet over medium-high heat. Cook and stir ground beef in the hot skillet until browned and crumbly, 5 to 7 minutes. Drain and discard grease.   ",
-          "    Step 3   Pour spaghetti sauce, tomato sauce, and oregano into a large saucepan. Set aside.   ",
-          "    Step 4   Heat olive oil in a large skillet over medium-high heat. Saute garlic and onions until softened and translucent, about 5 minutes. Place cooked onion-garlic mixture and cooked ground beef into the sauce mixture. Cover and let simmer for 15 to 20 minutes.   ",
-          "    Step 5   Combine mozzarella and provolone cheeses in a medium bowl. Mix ricotta cheese, eggs, milk, and 1/2 teaspoon oregano together in a separate bowl.   ",
-          "    Step 6   Layer a 9x13-inch baking pan with just enough sauce to cover the bottom of the pan. Lay three lasagna noodles in the pan over the sauce. Cover with more sauce, then with ricotta mixture then sprinkle with mozzarella/provolone mixture; repeat layering. Finish with a layer of noodles and remaining sauce. Sprinkle top with Parmesan cheese.   ",
-          "    Step 7   Bake, covered, in the preheated oven for 30 minutes. Uncover and continue to bake until cheese is melted and top is golden, about 15 minutes more.   "]'''
 
     steps = []
     for d in directions:
@@ -45,20 +37,30 @@ def get_directions(filename=None):
         words = d.split()
         step_number = words[1]
         step = Step(step_number)
-        step_ingredients = []
-        step_tools = []
-        step_methods = []
-        step_times = []
-
         #start location after step n to substring:
         start = d.index(words[2])
         d = d[start:]
         sentences = split_into_sentences(d)
         for s in sentences:
             #print(step_number + '' + s)
-            ingredients_in_s = get_ingredients(s, ingredients)
+            step_ingredients = get_ingredients(s, ingredients)
+            step_tools = get_tools(s, tools)
+            step_methods = get_methods(s, methods)
+            step_time = get_time(s)
+            #print(s)
+            #if step_time: print(step_time)
+            #print(step_ingredients)
+            #print(step_tools)
+            #print(step_methods)
             #words = d.split()
-
+            if step_ingredients:
+                step.ingredients = list(set(step.ingredients + step_ingredients))
+            if step_tools:
+                step.tools = list(set(step.tools + step_tools))
+            if step_methods:
+                step.methods = list(set(step.methods + step_methods))
+            if not step.time:
+                step.time = step_time
 
         steps.append(step)
     return steps
@@ -79,15 +81,18 @@ def ingredient_parser(ingredients):
         if len(i.split(',')) > 2:
             print('More than 1 comma: ' + i)
             return -1
-        i = i.split(',')[0]
+        i = i.split(',')[0].lower()
         if ')' in i:
-            #To do: handle: "    4 (6 ounce) salmon steaks    ", it parses as 'steaks'
-            start = i.index(')')
-            i = i[start+1:]
-            words = i.split()
-            #skip quantity unit
-            start = i.index(words[0]) + len(words[0])
-            i = i[start:]
+            #Just handle: "    4 (6 ounce) salmon steaks    ", it parses as 'steaks'
+            if 'salmon steaks' in i:
+                i = 'salmon steaks'
+            else:
+                start = i.index(')')
+                i = i[start+1:]
+                words = i.split()
+                #skip quantity unit
+                start = i.index(words[0]) + len(words[0])
+                i = i[start:]
         else:
             words = i.split()
             if len(words) < 2:
@@ -111,7 +116,7 @@ def ingredient_parser(ingredients):
                 else:
                     print('No quantity found: ' + i)
                     #To do: handle ' salt and pepper to taste'
-
+                    start = 0
                     #return -1
                 #start = i.index(words[0]) + len(words[0])
                 i = i[start:]
@@ -128,10 +133,96 @@ def ingredient_parser(ingredients):
 
 def get_ingredients(s, ingredients):
     ingredients_in_s = []
+    for i in ingredients:
+        for word in i.split():
+            word = word.replace(',', '')
+            word = word.replace('.', '')
+            word = word.lower()
+            if word in s.lower():
+                if not i in ingredients_in_s:
+                    ingredients_in_s.append(i)
+
+    if not ingredients_in_s:
+        #handle marinade
+        if 'marinade' in s.lower():
+            ingredients_in_s.append('marinade')
+
     return ingredients_in_s
 
+def get_tools(s, tools):
+    tools_in_s = []
+    for s_w in s.split():
+        s_w = s_w.replace(',', '')
+        s_w = s_w.replace('.', '')
+        s_w = s_w.lower()
+        if s_w in tools:
+            if not s_w in tools_in_s:
+                tools_in_s.append(s_w)
+
+    return tools_in_s
+
+def get_methods(s, methods):
+    methods_in_s = []
+    for s_w in s.split():
+        s_w = s_w.replace(',', '')
+        s_w = s_w.replace('.', '')
+        s_w = s_w.lower()
+        if s_w in methods[0]:
+            if not s_w in methods_in_s:
+                methods_in_s.append(s_w)
+        elif s_w in methods[1]:
+            if not s_w in methods_in_s:
+                methods_in_s.append(s_w)
+        elif s_w in ['basting', 'pour', 'squeeze', 'seal', 'drain', 'discard', 'brush']:
+            if not s_w in methods_in_s:
+                methods_in_s.append(s_w)
+
+    return methods_in_s
+
+def get_time(s):
+    time_in_s = []
+    stop_words = ['about', 'for', ',']
+    s = s.lower()
+    unit = ''
+    if 'minute' in s:
+        unit = 'minute'
+        end = s.index('minute')
+    elif 'hour' in s:
+        unit = 'hour'
+        end = s.index('hour')
+    else:
+        return []
+
+    s = s[:end]
+    s = s.strip()
+    words = s.split()
+    for i in range(len(words)-1, -1 , -1):
+        w = words[i]
+        if w.isdigit():
+            if int(w) > 1:
+                unit = unit + 's'
+            time_in_s.append(w)
+            time_in_s.append(unit)
+        elif w in stop_words:
+            break
+        if len(words)-1-i == 2:
+            break
+
+    return time_in_s
+
+def print_directions(steps):
+
+    for step in steps:
+        print('Step {}'.format(step.step_number))
+        print('Ingredients: {}'.format(step.ingredients))
+        print('Tools: {}'.format(step.tools))
+        print('Methods: {}'.format(step.methods))
+        print('Times: {}'.format(step.time))
+
 def main():
-    get_directions()
+    recipe_data = load_recipe()
+    steps = get_directions(recipe_data)
+    print_directions(steps)
 
 if __name__=='__main__':
     main()
