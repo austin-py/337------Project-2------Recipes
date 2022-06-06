@@ -15,23 +15,23 @@ class Recipe:
             res += '{} {} {} {}, {}'.format(str(i.quantity), i.measurement, i.descriptor, i.name, i.preparation)
             res += '\n'
 
-        res += '   Tools:\n'
-        for t in self.tools:
-            res += '      '
-            res += t
-            res += '\n'
+        res += '\n   Tools:'+ str(self.tools) + '\n'
 
-        res += '   Methods:\n'
-        for m in self.methods:
-            res += '      '
-            res += m
-            res += '\n'
 
-        res += '   Steps:\n'
+        res += '\n   Main Methods:' + str(self.methods[0]) + '\n'
+
+            
+        res += '\n   Secondary Methods:' + str(self.methods[1]) + '\n'
+
+
+        res += '\n   Steps:\n'
         for s in self.steps:
             res += '      '
-            res += 'Step {}: '.format(str(s.step_number))
-            res += s.description
+            res += 'Step {}:\n'.format(str(s.step_number))
+            res += '         Ingredients: {}\n'.format(s.ingredients)
+            res += '         Tools: {}\n'.format(s.tools)
+            res += '         Methods: {}\n'.format(s.methods)
+            res += '         Times: {}\n'.format(s.time)
             res += '\n'
 
         print(res)
