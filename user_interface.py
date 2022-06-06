@@ -5,9 +5,9 @@ Writing a super basic user interface, we can make this better as we have time.
 
 
 
-import transformers
 import src.create_recipe as cr 
-
+import src.dairy_free as df 
+import src.half_double as scale
 
 def accept_url():
     """
@@ -61,9 +61,19 @@ if __name__ == '__main__':
     elif transformation == 'style of cuisine placeholder':
         pass
     elif transformation == 'scale serving size':
-        pass 
+        float_input = False
+        while not float_input:
+            scale_factor = input("By what factor would you like to scale this recipe?")
+            try: 
+                scale_factor = float(scale_factor)
+                float_input = True 
+                transformed_recipe = scale.scale_recipe(recipe,scale_factor)
+            except:
+                print("You did not enter a valid number to scale the recipe. Please try again. ")
+
     elif transformation == 'dairy free':
-        pass 
+        transformed_recipe = df.dairy_free(recipe)
+        
     elif transformation == 'just print recipe':
         pass
 

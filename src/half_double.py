@@ -1,5 +1,4 @@
-from src import ingredient_parser as ip 
-from src.classes import Recipe
+from create_recipe import * 
 
 
 def scale_recipe(recipe, scale_factor):
@@ -19,3 +18,12 @@ def scale_recipe(recipe, scale_factor):
     return recipe 
 
 
+if __name__ == '__main__':
+    recipe = create_recipe('https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/')
+    for i in recipe.ingredients:
+        print (i.name,i.quantity)
+
+    dairy_f = scale_recipe(recipe,.5)
+
+    for i in dairy_f.ingredients:
+        print (i.name, i.quantity)

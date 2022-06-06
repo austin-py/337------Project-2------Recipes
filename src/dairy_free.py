@@ -1,5 +1,6 @@
 
 import ingredient_parser as ip 
+from create_recipe import create_recipe
 
 dairy_types = {
     "milk": "oat milk",
@@ -8,12 +9,6 @@ dairy_types = {
     "yogurt": "almond milk yogurt",
     "whey protien": "brown rice protien"
 } 
-
-ingreds = ip.get_ingredient_list('https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/')
-for i in ingreds: 
-    print (i.name)
-
-
 def dairy_free(recipe):
     """
     Input: Takes a recipe object descriped in classes.py,
@@ -22,16 +17,32 @@ def dairy_free(recipe):
     """
     ingredients = recipe.ingredients
     for ingredient in ingredients:
-        if ingredient.name in dairy_types.keys():
-            ingredient.name = dairy_types[ingredient.name]
-        for step in recipe.steps:
-            if ingredient.name in step:
-                step.replace(ingredient.name,dairy_types[ingredient.name])
+        for dairy in dairy_types.keys():
+            if dairy in ingredient.name:
+                ingredient.name = ingredient.name.replace(dairy,dairy_types[dairy])
+    
+    steps = recipe.steps
+    for step in steps:  
+        for dairy in dairy_types.keys():
+            if dairy in step.description:
+                step.description = step.description.replace(dairy,dairy_types[dairy])
+
+    recipe.ingredients = ingredients
+    recipe.steps = steps 
+     #TODO adjust general nutrition info 
+    return recipe 
         
     
-    #TODO adjust general nutrition info 
-    
-    recipe.ingredients = ingredients 
-    return recipe 
+   
 
+
+if __name__ == '__main__':
+    recipe = create_recipe('https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/')
+    for i in recipe.ingredients:
+        print (i.name)
+
+    dairy_f = dairy_free(recipe)
+
+    for i in dairy_f.ingredients:
+        print (i.name)
 
