@@ -1,10 +1,3 @@
-"""
-Writing a super basic user interface, we can make this better as we have time. 
-"""
-
-
-
-
 import create_recipe as cr 
 import dairy_free as df 
 import half_double as scale
