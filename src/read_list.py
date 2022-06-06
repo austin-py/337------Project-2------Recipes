@@ -279,7 +279,7 @@ def get_cooking_appliances_list():
 
 #Combine all lists to one
 def get_tool_list():
-    tool_list = []
+    tool_list = ['simmer', 'plastic bag', 'bag', 'oven rack', 'broiler pan']
     tool_list.extend(get_kitchen_utensils_list())
     tool_list.extend(get_kitchenware_list())
     tool_list.extend(get_cooking_appliances_list())
