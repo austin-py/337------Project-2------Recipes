@@ -3,6 +3,7 @@ import dairy_free as df
 import half_double as scale
 import health_transformer as ht
 import vegetarian as ve
+import copy 
 
 def accept_url():
     """
@@ -46,16 +47,18 @@ def main():
     recipe = cr.create_recipe(url)
 
     transformation = accept_transformation()
+    recipe_to_transform = copy.deepcopy(recipe)
+
     if transformation == 'to vegetarian':
-        transformed_recipe, change = ve.to_vegetarian(recipe)
+        transformed_recipe, change = ve.to_vegetarian(recipe_to_transform)
         print(change)
     elif transformation == 'from vegetarian':
-        transformed_recipe, change = ve.to_non_vegetarian(recipe)
+        transformed_recipe, change = ve.to_non_vegetarian(recipe_to_transform)
         print(change)
     elif transformation == 'healthy':
-        transformed_recipe = ht.to_healthy(recipe)
+        transformed_recipe = ht.to_healthy(recipe_to_transform)
     elif transformation == 'unhealthy':
-        transformed_recipe = ht.to_unhealthy(recipe)
+        transformed_recipe = ht.to_unhealthy(recipe_to_transform)
     elif transformation == 'style of cuisine placeholder':
         pass
     elif transformation == 'scale serving size':
@@ -65,12 +68,12 @@ def main():
             try: 
                 scale_factor = float(scale_factor)
                 float_input = True 
-                transformed_recipe = scale.scale_recipe(recipe,scale_factor)
+                transformed_recipe = scale.scale_recipe(recipe_to_transform,scale_factor)
             except:
                 print("You did not enter a valid number to scale the recipe. Please try again. ")
 
     elif transformation == 'dairy free':
-        transformed_recipe = df.dairy_free(recipe)
+        transformed_recipe = df.dairy_free(recipe_to_transform)
         
     elif transformation == 'just print recipe':
         recipe.print_recipe()
