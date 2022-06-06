@@ -38,12 +38,12 @@ class Recipe:
         return res
 
 class Ingredient:
-    def __init__(self, name):
+    def __init__(self, name, quantity=0, measurement='', descriptor='', preparation=''):
         self.name = name
-        self.quantity = 0
-        self.measurement = ''
-        self.descriptor = ''
-        self.preparation = ''
+        self.quantity = quantity
+        self.measurement = measurement
+        self.descriptor = descriptor
+        self.preparation = preparation
 
 class Step:
     def __init__(self, number):
