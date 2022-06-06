@@ -1,3 +1,5 @@
+import copy
+
 from classes import Recipe, Step
 from step_parser import get_directions, print_directions
 from read_json import load_recipe
@@ -12,8 +14,9 @@ healthy_method_list = ['broil', 'bake', 'poach', 'steam']
 unhealthy_method_list = ['cure', 'deep fry', 'caramelize', 'grill', 'roast', 'stir fry']
 
 def to_healthy(recipe):
-    recipe.name = 'healthy ' + recipe.name
-    ingredients = recipe.ingredients
+    transformed_recipe = copy.deepcopy(recipe)
+    transformed_recipe.name = 'healthy ' + recipe.name
+    ingredients = transformed_recipe.ingredients
 
     for i in range(len(ingredients)):
         if ingredients[i].name in unhealthy_protein_list:
@@ -23,8 +26,8 @@ def to_healthy(recipe):
 
         ingredients[i].name = 'organic ' + ingredients[i].name
 
-    recipe.ingredients = ingredients
-    steps = recipe.steps
+    transformed_recipe.ingredients = ingredients
+    steps = transformed_recipe.steps
     for s in steps:
         for i in range(len(s.ingredients)):
             if s.ingredients[i] in unhealthy_protein_list:
@@ -37,13 +40,14 @@ def to_healthy(recipe):
         for i in range(len(s.methods)):
             if s.methods[i] in unhealthy_method_list:
                 s.methods[i] = random.choice(healthy_method_list)
-    recipe.steps = steps
+    transformed_recipe.steps = steps
 
-    return recipe
+    return transformed_recipe
 
 def to_unhealthy(recipe):
-    recipe.name = 'unhealthy ' + recipe.name
-    ingredients = recipe.ingredients
+    transformed_recipe = copy.deepcopy(recipe)
+    transformed_recipe.name = 'unhealthy ' + recipe.name
+    ingredients = transformed_recipe.ingredients
     for i in range(len(ingredients)):
         if ingredients[i].name in healthy_protein_list:
             ingredients[i].name = random.choice(unhealthy_protein_list)
@@ -51,8 +55,8 @@ def to_unhealthy(recipe):
             ingredients[i].name = random.choice(unhealthy_condiment_list)
 
         ingredients[i].name = 'inorganic ' + ingredients[i].name
-    recipe.ingredients = ingredients
-    steps = recipe.steps
+    transformed_recipe.ingredients = ingredients
+    steps = transformed_recipe.steps
     for s in steps:
         for i in range(len(s.ingredients)):
             if s.ingredients[i] in healthy_protein_list:
@@ -66,9 +70,9 @@ def to_unhealthy(recipe):
             if s.methods[i] in healthy_method_list:
                 s.methods[i] = random.choice(unhealthy_method_list)
 
-    recipe.steps = steps
+    transformed_recipe.steps = steps
 
-    return recipe
+    return transformed_recipe
 
 def main():
     links = ['https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/',
@@ -79,7 +83,7 @@ def main():
              'https://www.allrecipes.com/recipe/7757/tiramisu-cheesecake/',
              'https://www.allrecipes.com/recipe/73303/mexican-rice-iii/']
     recipe = create_recipe(links[0])
-    print_directions(to_healthy(recipe).steps)
+    print_directions(to_unhealthy(recipe).steps)
 
 if __name__ == '__main__':
     main()
