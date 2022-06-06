@@ -6,6 +6,7 @@ Writing a super basic user interface, we can make this better as we have time.
 
 
 import transformers
+import src.create_recipe as cr 
 
 
 def accept_url():
@@ -30,7 +31,7 @@ def accept_transformation():
     Output: Returns the user-selected transformation from the available list
     #TODO add the style of cuisine we are doing to transformation list 
     """
-    transformations = ['to vegetarian','from vegetarian','healthy','unhealthy','style-of-cuisine-placeholder','scale serving size', 'dairy-free']
+    transformations = ['to vegetarian','from vegetarian','healthy','unhealthy','style-of-cuisine-placeholder','scale serving size', 'dairy free', 'just print recipe']
     while True:
         print("Please choose a transformation from the following options:")
         for i in transformations:
@@ -46,9 +47,24 @@ def accept_transformation():
 
 
 if __name__ == '__main__':
-    accept_url()
-    #TODO BUILD RECIPE HERE 
-    accept_transformation()
-    #TODO Some transformations here 
+    url = accept_url()
+    recipe = cr.create_recipe(url)
+    transformation = accept_transformation()
+    if transformation == 'to vegetarian':
+        pass 
+    elif transformation == 'from vegetarian':
+        pass 
+    elif transformation == 'healthy':
+        pass 
+    elif transformation == 'unhealthy':
+        pass
+    elif transformation == 'style of cuisine placeholder':
+        pass
+    elif transformation == 'scale serving size':
+        pass 
+    elif transformation == 'dairy free':
+        pass 
+    elif transformation == 'just print recipe':
+        pass
 
-    #Output somewhere here 
+    #TODO Output somewhere here 
