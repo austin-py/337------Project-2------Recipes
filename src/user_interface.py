@@ -8,6 +8,7 @@ Writing a super basic user interface, we can make this better as we have time.
 import src.create_recipe as cr 
 import src.dairy_free as df 
 import src.half_double as scale
+import src.health_transformer as ht
 
 def accept_url():
     """
@@ -55,9 +56,9 @@ if __name__ == '__main__':
     elif transformation == 'from vegetarian':
         pass 
     elif transformation == 'healthy':
-        pass 
+        transformed_recipe = ht.to_healthy(recipe)
     elif transformation == 'unhealthy':
-        pass
+        transformed_recipe = ht.to_unhealthy(recipe)
     elif transformation == 'style of cuisine placeholder':
         pass
     elif transformation == 'scale serving size':
