@@ -51,7 +51,7 @@ class Step:
         self.ingredients = []
         self.tools = []
         self.methods = []
-        self.time = 0
+        self.time = []
         self.description = ''
 
 def main():
