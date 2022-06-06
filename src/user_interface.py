@@ -1,14 +1,7 @@
-"""
-Writing a super basic user interface, we can make this better as we have time. 
-"""
-
-
-
-
-import src.create_recipe as cr 
-import src.dairy_free as df 
-import src.half_double as scale
-import src.health_transformer as ht
+import create_recipe as cr 
+import dairy_free as df 
+import half_double as scale
+import health_transformer as ht
 
 def accept_url():
     """
@@ -47,9 +40,10 @@ def accept_transformation():
 
 
 
-if __name__ == '__main__':
+def main():
     url = accept_url()
     recipe = cr.create_recipe(url)
+
     transformation = accept_transformation()
     if transformation == 'to vegetarian':
         pass 
@@ -64,7 +58,7 @@ if __name__ == '__main__':
     elif transformation == 'scale serving size':
         float_input = False
         while not float_input:
-            scale_factor = input("By what factor would you like to scale this recipe?")
+            scale_factor = input("By what factor would you like to scale this recipe?\n")
             try: 
                 scale_factor = float(scale_factor)
                 float_input = True 
@@ -76,6 +70,13 @@ if __name__ == '__main__':
         transformed_recipe = df.dairy_free(recipe)
         
     elif transformation == 'just print recipe':
-        pass
+        recipe.print_recipe()
+        return
 
-    #TODO Output somewhere here 
+    print("The recipe before transformation was:")
+    recipe.print_recipe()
+    print('The recipe after transoformation was:')
+    transformed_recipe.print_recipe()
+
+if __name__ == '__main__':
+    main()
