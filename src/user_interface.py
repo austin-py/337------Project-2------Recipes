@@ -1,16 +1,16 @@
+import copy 
 import create_recipe as cr 
 import dairy_free as df 
 import half_double as scale
 import health_transformer as ht
 import vegetarian as ve
-import copy 
+import asian_transformer as at 
 
 def accept_url():
     """
     Input: Nothing 
 
     Output: Returns a url from AllRecipes.com, or prints and error and prompts the user to try again if the url is not from AllRecipes
-    #TODO add more checks to make sure real url 
     """
     while True:
         url = input("Please input a url from AllRecipes.com: \n\n")
@@ -40,8 +40,6 @@ def accept_transformation():
         else:
             return(transformation)
 
-
-
 def main():
     url = accept_url()
     recipe = cr.create_recipe(url)
@@ -60,7 +58,7 @@ def main():
     elif transformation == 'unhealthy':
         transformed_recipe = ht.to_unhealthy(recipe_to_transform)
     elif transformation == 'asian':
-        pass
+        transformed_recipe= at.asianized(recipe_to_transform)
     elif transformation == 'scale serving size':
         float_input = False
         while not float_input:
@@ -81,7 +79,8 @@ def main():
 
     print("The recipe before transformation was:")
     recipe.print_recipe()
-    print('The recipe after transoformation was:')
+    print('\n\n\n')
+    print('The recipe after transformation was:')
     transformed_recipe.print_recipe()
 
 if __name__ == '__main__':

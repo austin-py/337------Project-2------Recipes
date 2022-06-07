@@ -1,9 +1,9 @@
 import copy
-from src.classes import Recipe, Step
-from src.step_parser import get_directions, print_directions
-from src.read_json import load_recipe
+from classes import Recipe, Step
+from step_parser import get_directions, print_directions
+from read_json import load_recipe
 import random
-from src.create_recipe import create_recipe
+from create_recipe import create_recipe
 
 
 def asianized(recipe):
