@@ -1,5 +1,5 @@
-from classes import *
-from soup import *
+from src.classes import *
+from src.soup import *
 import re
 import nltk
 
@@ -47,7 +47,7 @@ def parse_ingredient(data):
         ingredient_listss.append(list(filter(('').__ne__, ingredient.split(' '))))
     for il in ingredient_listss:
         quantity = 0
-        measurement = 'None Given'
+        measurement = ''
         mqtpl = distr_components(il, ingredient_listss, quantity, measurement, measurement_in_parentheses, measurements)
         quantities_output.append(mqtpl[1])
         measurements_output.append(mqtpl[0])
@@ -59,8 +59,6 @@ def parse_ingredient(data):
                         descriptor += word
                     else:
                         descriptor += f' and {word}'
-        if descriptor == '':
-            descriptor = 'None Given'
         descriptor_output.append(descriptor)
         for key in remove_from_name.keys():
             for word in remove_from_name[key]:
@@ -82,7 +80,7 @@ def parse_ingredient(data):
                     preparation += f'{tpl[0]}'
                 else:
                     preparation += f' and {tpl[0]}'
-        if mqtpl[0] == 'None Given':
+        if mqtpl[0] == '':
             measurements_output[ingredient_listss.index(il)] = name
         if preparation == '':
             preparation = 'untouched'
@@ -132,6 +130,7 @@ def distr_components(il, ingredient_listss, quantity, measurement, measurement_i
     # print(il)
     # print(measurement, quantity)
     return measurement, quantity
+
 def test_ingredient_parser():
     links = ['https://www.allrecipes.com/recipe/244716/shirataki-meatless-meat-pad-thai/',
              'https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/',
