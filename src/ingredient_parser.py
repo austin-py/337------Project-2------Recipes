@@ -99,7 +99,7 @@ def distr_components(il, ingredient_listss, quantity, measurement, measurement_i
         # if a fraction is in one of ingredient's words, get that word, take word[0]:
         # if word[0] = fraction: set ingredient quantity to fraction
         # else: isolate it in var, set ingredient quantity to value of fraction + var
-        fractions = {'½': 0.5, '¼': 0.25}
+        fractions = {'½': 0.5, '¼': 0.25, '⅓': 1/3, '⅛': 0.125}
         if initial_digit not in fractions:
             whole_number = initial_digit[0]
             if "to" in il and "taste" in il:
