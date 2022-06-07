@@ -5,7 +5,6 @@ import half_double as scale
 import health_transformer as ht
 import vegetarian as ve
 import asian_transformer as at 
-#TODO import jaheels code here when he pushes it 
 
 def accept_url():
     """
