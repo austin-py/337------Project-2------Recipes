@@ -84,6 +84,10 @@ def parse_ingredient(data):
             measurements_output[ingredient_listss.index(il)] = name
         if preparation == '':
             preparation = 'untouched'
+        if 'taste' in name:
+            name = name.replace('taste', '')
+        if 'beaten' in name:
+            name = name.replace('beaten', '')
         name_output.append(name)
         preparation_output.append(preparation)
     return name_output, quantities_output, measurements_output, descriptor_output, preparation_output
