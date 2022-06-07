@@ -7,11 +7,10 @@ def scale_recipe(recipe, scale_factor):
     
     Output: Returns the recipe scaled by the factor 
     """
+    recipe.name += " scaled by {}".format(scale_factor)
     ingredients = recipe.ingredients
     for ingredient in ingredients:
         ingredient.quantity *= scale_factor
-
-    #TODO cut nutrition info and serving size in half too 
 
     
     recipe.ingredients = ingredients 
@@ -24,6 +23,7 @@ if __name__ == '__main__':
         print (i.name,i.quantity)
 
     dairy_f = scale_recipe(recipe,.5)
+    print(recipe.name)
 
     for i in dairy_f.ingredients:
         print (i.name, i.quantity)

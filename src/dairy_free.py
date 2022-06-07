@@ -15,6 +15,7 @@ def dairy_free(recipe):
     
     Output: Returns the recipe with dairy products replaced. 
     """
+    recipe.name = "dairy free " + recipe.name
     ingredients = recipe.ingredients
     for ingredient in ingredients:
         for dairy in dairy_types.keys():
