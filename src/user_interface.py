@@ -27,7 +27,7 @@ def accept_transformation():
     Output: Returns the user-selected transformation from the available list
     #TODO add the style of cuisine we are doing to transformation list 
     """
-    transformations = ['to vegetarian','from vegetarian','healthy','unhealthy','style-of-cuisine-placeholder','scale serving size', 'dairy free', 'just print recipe']
+    transformations = ['to vegetarian','from vegetarian','healthy','unhealthy','asian','scale serving size', 'dairy free', 'just print recipe']
     while True:
         print("Please choose a transformation from the following options:")
         for i in transformations:
@@ -59,7 +59,7 @@ def main():
         transformed_recipe = ht.to_healthy(recipe_to_transform)
     elif transformation == 'unhealthy':
         transformed_recipe = ht.to_unhealthy(recipe_to_transform)
-    elif transformation == 'style of cuisine placeholder':
+    elif transformation == 'asian':
         pass
     elif transformation == 'scale serving size':
         float_input = False
@@ -85,4 +85,5 @@ def main():
     transformed_recipe.print_recipe()
 
 if __name__ == '__main__':
-    main()
+    while True:
+        main()
